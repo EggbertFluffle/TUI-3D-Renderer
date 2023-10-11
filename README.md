@@ -1,4 +1,7 @@
-# eggtui
+# Terminal 3D Renderer (Typescript)
+
+## What is this and why
+This is a very SIMPLE and BAREBONES 3D renderer that runs in the terminal. It can display 3 different 3d shapes, being the first three of the five Platonic Solids. A tetrahedron, a cube (and rectangular prism), and an octahedron.
 
 To install dependencies:
 
@@ -9,7 +12,5 @@ bun install
 To run:
 
 ```bash
-bun run main.ts
+bun main.ts
 ```
-
-This project was created using `bun init` in bun v1.0.0. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
