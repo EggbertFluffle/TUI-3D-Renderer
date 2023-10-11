@@ -1,0 +1,14 @@
+{
+  "name": "eggtui",
+  "module": "main.ts",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "mathjs": "^11.11.1"
+  }
+}
