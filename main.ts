@@ -13,13 +13,11 @@ const orthoProjection: math.Matrix = matrix([
 	[0, 0, 1]
 ]);
 
-// TODO inplement a perspective projection matrix
-
 let angle: number = 0;
 
-// let box: Array<math.Matrix> = shapeFactory.rectPrism([0, 0, 0], [20, 20, 20]);
+let box: Array<math.Matrix> = shapeFactory.rectPrism([0, 0, 0], [20, 20, 20]);
 // let octahedron: Array<math.Matrix> = shapeFactory.octahedron([0, 0, 0], [35, 35, 35]);
-let tetrahedron: Array<math.Matrix> = shapeFactory.tetrahedron([0, 0, 0], 35);
+// let tetrahedron: Array<math.Matrix> = shapeFactory.tetrahedron([0, 0, 0], 35);
 
 const init = () => {
 	loop();
@@ -49,7 +47,7 @@ const loop = () => {
 		[0,                0,               1]
 	]);
 
-	let projectedPoints: Array<math.Matrix> = tetrahedron.map(p => {
+	let projectedPoints: Array<math.Matrix> = box.map(p => {
 		p = multiply(rotationY, p);
 		p = multiply(rotationX, p);
 		p = multiply(rotationZ, p);
@@ -57,7 +55,7 @@ const loop = () => {
 		return p;
 	});
 
-	graphicsManager.tetrahedron(projectedPoints);
+	graphicsManager.rectPrism(projectedPoints);
 
 	graphicsManager.render();
 	setTimeout(loop, 1000 / frameRate);
