@@ -22,7 +22,7 @@ export class GraphicsManager {
 
 	point(p: math.Matrix): void {
 		p = p.map(Math.round);
-		this.pixelBuffer.set(p);
+		this.pixelBuffer.set(p, this.stroke);
 	}
 
 	line(p1: math.Matrix, p2: math.Matrix): void {
@@ -89,6 +89,24 @@ export class GraphicsManager {
 	tetrahedron(points: Array<math.Matrix>): void {
 		let from: Array<number> = [0, 0, 0, 1, 2, 3];
 		let to: Array<number> = [1, 2, 3, 2, 3, 1];
+
+		for(let i = 0; i < from.length; i++) {
+			this.line(points[from[i]], points[to[i]]);
+		}
+	}
+
+	dodecahedron(points: Array<math.Matrix>): void {
+		let to: Array<number> =   [0,  0,  0, 1,  1,  1,  2,  2,  2,  3,  3,  3, 4,  4,  4, 5,  5,  5,  6,  6,  6,  7,  7,  7,  8,  9, 12, 14, 16, 18];
+		let from: Array<number> = [8, 12, 16, 9, 12, 17, 10, 15, 17, 11, 15, 16, 8, 13, 19, 9, 13, 18, 10, 14, 18, 11, 14, 19, 11, 10, 13, 15, 17, 19];
+
+		for(let i = 0; i < from.length; i++) {
+			this.line(points[from[i]], points[to[i]]);
+		}
+	}
+
+	icosahedron(points: Array<math.Matrix>): void {
+		let to: Array<number> =   [0, 0, 0, 0,  0, 10, 10, 10, 10, 11, 11, 11,  7, 7, 7, 7, 9, 9, 9, 9, 1, 4, 4, 4, 3, 8, 5, 2, 2, 2, 3];
+		let from: Array<number> = [1, 4, 6, 9, 11, 11,  6,  3,  2,  1,  7,  6, 10, 1, 5, 2, 1, 8, 4, 5, 5, 6, 3, 8, 8, 5, 7, 3, 8, 5, 6];
 
 		for(let i = 0; i < from.length; i++) {
 			this.line(points[from[i]], points[to[i]]);
